@@ -67,19 +67,13 @@ export const AboutModal: React.FC<Props> = ({ isOpen, onClose }) => {
               <div>
                 <h5 className="font-bold text-slate-900 text-sm">K. Kiran</h5>
                 <p className="text-xs text-teal-800 font-semibold mt-0.5">
-                  Developer &amp; QA Lead
+                  Developer
                 </p>
                 <p className="text-xs text-slate-600 mt-1 leading-normal">
-                  Implemented the validated Add Expense form, Expense Detail view with delete protection, and resolved all 5 quality defect test cases.
+                  Implemented the validated Add Expense form, Expense Detail view with delete protection, and responsive mobile styling.
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* QA Quality Badge */}
-          <div className="flex items-center space-x-2 text-xs font-medium text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-200">
-            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>5/5 QA defects tested &amp; verified fixed for project submission.</span>
           </div>
         </div>
 

@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import {
   BarChart2,
   Home,
-  FileCheck2,
   Smartphone,
   Monitor,
   MoreVertical,
@@ -15,8 +14,8 @@ import {
 } from 'lucide-react';
 
 interface Props {
-  activeTab: 'home' | 'summary' | 'defects';
-  onSelectTab: (tab: 'home' | 'summary' | 'defects') => void;
+  activeTab: 'home' | 'summary';
+  onSelectTab: (tab: 'home' | 'summary') => void;
   isMobileFramed: boolean;
   onToggleFrame: () => void;
   onExport: () => void;
@@ -101,21 +100,6 @@ export const Navbar: React.FC<Props> = ({
           >
             <BarChart2 className="w-4 h-4" />
             <span className="hidden sm:inline">Summary</span>
-          </button>
-
-          <button
-            onClick={() => onSelectTab('defects')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition ${
-              activeTab === 'defects'
-                ? 'bg-teal-900/80 text-white shadow-xs'
-                : 'text-teal-100 hover:bg-white/10'
-            }`}
-          >
-            <FileCheck2 className="w-4 h-4" />
-            <span className="hidden sm:inline">Defect Log</span>
-            <span className="bg-emerald-500 text-white text-[10px] px-1.5 py-0.2 rounded-full font-bold">
-              5
-            </span>
           </button>
 
           {/* Device Orientation / Phone Sideways Frame Toggle */}

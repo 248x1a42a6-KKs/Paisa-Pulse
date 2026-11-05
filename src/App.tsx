@@ -6,8 +6,6 @@ import {
   RefreshCw,
   Search,
   Receipt,
-  FileCheck2,
-  Sparkles,
 } from 'lucide-react';
 import { Expense, LoadStatus, CategoryType } from './types';
 import { storageService } from './services/storageService';
@@ -18,7 +16,6 @@ import { ExpenseCard } from './components/ExpenseCard';
 import { ExpenseDetailModal } from './components/ExpenseDetailModal';
 import { AddExpenseModal } from './components/AddExpenseModal';
 import { SummaryView } from './components/SummaryView';
-import { DefectLogView } from './components/DefectLogView';
 import { Navbar } from './components/Navbar';
 import { Toast } from './components/Toast';
 import { AboutModal } from './components/AboutModal';
@@ -27,7 +24,7 @@ export default function App() {
   const [status, setStatus] = useState<LoadStatus>('loading');
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [budget, setBudgetState] = useState<number>(0);
-  const [activeTab, setActiveTab] = useState<'home' | 'summary' | 'defects'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'summary'>('home');
 
   // Modals & Sheets
   const [isAddOpen, setIsAddOpen] = useState(false);
@@ -195,53 +192,6 @@ export default function App() {
     e.target.value = '';
   };
 
-  // Automated QA Trigger for Defect Log Scenarios
-  const handleTriggerTest = (scenarioKey: string) => {
-    switch (scenarioKey) {
-      case 'empty_input':
-        setActiveTab('home');
-        setIsAddOpen(true);
-        showToast('QA Test: Submitting with blank fields to trigger validation', 'info');
-        break;
-      case 'long_text': {
-        const longExpense: Expense = {
-          id: 'test_long_' + Date.now(),
-          note: 'VeryLongTextWithoutAnySpacesTestingCardLayoutAndWrappingCapabilities12345678',
-          category: 'Study',
-          amount: 88500,
-          date: new Date().toISOString(),
-        };
-        const updated = [longExpense, ...expenses];
-        setExpenses(updated);
-        storageService.saveExpenses(updated);
-        setActiveTab('home');
-        setSelectedExpense(longExpense);
-        showToast('QA Test: Created 80-character uninterrupted note', 'success');
-        break;
-      }
-      case 'no_internet': {
-        const works = storageService.getExpenses().length >= 0;
-        showToast(
-          works
-            ? 'QA Test: Offline LocalStorage is fully functional & persistent!'
-            : 'Storage check failed',
-          'success'
-        );
-        break;
-      }
-      case 'fast_taps': {
-        showToast('QA Test: Debounce guard validated! Fast taps safely rejected.', 'success');
-        break;
-      }
-      case 'phone_sideways':
-        setIsMobileFramed((prev) => !prev);
-        showToast('QA Test: Toggled between Mobile Phone frame and Fluid view!', 'info');
-        break;
-      default:
-        break;
-    }
-  };
-
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col font-sans text-slate-800 antialiased selection:bg-teal-200 selection:text-teal-900">
       {/* Hidden File Input for Import */}
@@ -280,14 +230,6 @@ export default function App() {
             expenses={expenses}
             onBack={() => setActiveTab('home')}
             onOpenAdd={() => setIsAddOpen(true)}
-          />
-        )}
-
-        {activeTab === 'defects' && (
-          <DefectLogView
-            onBack={() => setActiveTab('home')}
-            onTriggerTest={handleTriggerTest}
-            onShowToast={showToast}
           />
         )}
 

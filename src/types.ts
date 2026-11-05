@@ -16,15 +16,3 @@ export interface Expense {
 }
 
 export type LoadStatus = 'loading' | 'ready' | 'error';
-
-export interface DefectItem {
-  id: number;
-  category: string;
-  title: string;
-  description: string;
-  stepsToReproduce: string;
-  expectedBehavior: string;
-  actualFixedBehavior: string;
-  fixed: boolean;
-  testScenarioKey: 'empty_input' | 'long_text' | 'no_internet' | 'fast_taps' | 'phone_sideways';
-}
