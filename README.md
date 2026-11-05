@@ -1,6 +1,19 @@
 # Paisa Pulse 💰
 
+**Topic:** Expense Tracker (Flutter Application Development Programme Group Project)  
+**Delivered by:** IITM Pravartak and BodhBridge Flutter Lab  
+**College:** KHIT Guntur  
+
 A simple, student-friendly expense tracker built for our Application Development Programme group project. It helps college students and daily spenders keep track of everyday expenses in Indian Rupees (₹), set a monthly budget, and avoid overspending with timely warnings.
+
+---
+
+## 📸 Screenshots
+
+Add your three app screenshots into the `docs/` folder:
+- **Home & Budget Status:** `docs/screenshot_home.png`
+- **Add Expense & Form Validation:** `docs/screenshot_form.png`
+- **Category Summary Breakdown:** `docs/screenshot_summary.png`
 
 ---
 
@@ -80,13 +93,19 @@ All data is stored directly on your device using local storage (`localStorage`).
 
 ## 🚀 Running the Project
 
-1. Clone or extract the repository files.
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+### Web Version (Vite / React)
+```bash
+npm install
+npm run dev
+# Open http://localhost:3000
+npm run build # Generates dist/
+```
+
+### Android / Flutter Release Build
+```bash
+flutter pub get
+flutter test
+flutter run
+flutter build apk --release
+# Release APK is output at: build/app/outputs/flutter-apk/app-release.apk
+```
