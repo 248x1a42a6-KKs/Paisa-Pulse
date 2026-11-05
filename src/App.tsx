@@ -21,6 +21,7 @@ import { SummaryView } from './components/SummaryView';
 import { DefectLogView } from './components/DefectLogView';
 import { Navbar } from './components/Navbar';
 import { Toast } from './components/Toast';
+import { AboutModal } from './components/AboutModal';
 
 export default function App() {
   const [status, setStatus] = useState<LoadStatus>('loading');
@@ -31,6 +32,7 @@ export default function App() {
   // Modals & Sheets
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [isBudgetOpen, setIsBudgetOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState<Expense | null>(null);
   const [editingExpense, setEditingExpense] = useState<Expense | null>(null);
 
@@ -269,6 +271,7 @@ export default function App() {
           onImportClick={() => fileInputRef.current?.click()}
           onReset={handleResetData}
           onClear={handleClearAll}
+          onAbout={() => setIsAboutOpen(true)}
         />
 
         {/* View Routing */}
@@ -477,6 +480,11 @@ export default function App() {
           setEditingExpense(exp);
           setIsAddOpen(true);
         }}
+      />
+
+      <AboutModal
+        isOpen={isAboutOpen}
+        onClose={() => setIsAboutOpen(false)}
       />
 
       {/* Toast notifications */}

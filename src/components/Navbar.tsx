@@ -11,6 +11,7 @@ import {
   RotateCcw,
   Trash2,
   Check,
+  Users,
 } from 'lucide-react';
 
 interface Props {
@@ -22,6 +23,7 @@ interface Props {
   onImportClick: () => void;
   onReset: () => void;
   onClear: () => void;
+  onAbout: () => void;
 }
 
 export const Navbar: React.FC<Props> = ({
@@ -33,6 +35,7 @@ export const Navbar: React.FC<Props> = ({
   onImportClick,
   onReset,
   onClear,
+  onAbout,
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -140,6 +143,17 @@ export const Navbar: React.FC<Props> = ({
 
             {menuOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 py-1.5 text-slate-800 text-xs font-semibold z-50 animate-scaleUp">
+                <button
+                  onClick={() => {
+                    setMenuOpen(false);
+                    onAbout();
+                  }}
+                  className="w-full px-3.5 py-2 text-left hover:bg-slate-50 flex items-center space-x-2 text-slate-700"
+                >
+                  <Users className="w-4 h-4 text-teal-600" />
+                  <span>About Team &amp; Project</span>
+                </button>
+                <div className="h-px bg-slate-100 my-1" />
                 <button
                   onClick={() => {
                     setMenuOpen(false);
