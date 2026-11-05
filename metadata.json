@@ -1,0 +1,6 @@
+{
+  "name": "Paisa Pulse - Expense & Budget Tracker",
+  "description": "Track daily spending, set monthly budgets with alert thresholds (80% warning and over-budget alerts), and visualize expense summaries by category.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
